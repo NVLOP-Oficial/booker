@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Booking — Roster</title>
+<meta name="description" content="Roster de DJs para venues, productoras y bares.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0c0c0e;--panel:#151518;--line:#26262b;--txt:#f2f0ea;--mute:#9a98a0;--acc:#ff5a36}
+@media (prefers-color-scheme:light){:root{--bg:#0c0c0e}}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--txt);font-family:'Space Grotesk',system-ui,sans-serif;line-height:1.55;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+nav{position:sticky;top:0;z-index:10;background:rgba(12,12,14,.85);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
+.logo{font-weight:700;letter-spacing:.18em;text-transform:uppercase;font-size:14px}
+.logo i{color:var(--acc);font-style:normal}
+nav ul{display:flex;gap:22px;list-style:none;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute)}
+nav ul a:hover{color:var(--txt)}
+.hero{padding:110px 0 80px}
+.eyebrow{font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:var(--acc);margin-bottom:18px}
+h1{font-size:clamp(40px,8vw,92px);line-height:1;letter-spacing:-.03em;font-weight:700;max-width:14ch}
+.hero p{margin-top:24px;max-width:46ch;color:var(--mute);font-size:18px}
+.btns{display:flex;gap:12px;flex-wrap:wrap;margin-top:34px}
+.btn{display:inline-block;padding:14px 26px;border-radius:999px;font-size:14px;font-weight:500;letter-spacing:.04em;border:1px solid var(--line);transition:.2s;cursor:pointer;background:transparent;color:var(--txt);font-family:inherit}
+.btn:hover{border-color:var(--txt)}
+.btn.p{background:var(--acc);border-color:var(--acc);color:#0c0c0e;font-weight:700}
+.btn.p:hover{filter:brightness(1.1)}
+section{padding:70px 0;border-top:1px solid var(--line)}
+h2{font-size:clamp(28px,4vw,44px);letter-spacing:-.02em;margin-bottom:12px}
+.lead{color:var(--mute);max-width:60ch;margin-bottom:34px}
+.about{display:grid;grid-template-columns:1.1fr 1fr;gap:48px}
+.steps{display:grid;gap:14px}
+.step{display:flex;gap:16px;padding:18px;background:var(--panel);border:1px solid var(--line);border-radius:14px}
+.step b{font-size:22px;color:var(--acc);min-width:32px}
+.step span{color:var(--mute);font-size:15px}
+.step strong{display:block;color:var(--txt);font-weight:500}
+.links{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:20px}
+.card{position:relative;display:block;border-radius:16px;overflow:hidden;background:var(--panel);border:1px solid var(--line);transition:transform .25s,border-color .25s}
+.card:hover{transform:translateY(-4px);border-color:var(--acc)}
+.card .ph{aspect-ratio:4/5;overflow:hidden}
+.card img{width:100%;height:100%;object-fit:cover;transition:transform .5s;display:block}
+.card:hover img{transform:scale(1.05)}
+.card .info{position:absolute;left:0;right:0;bottom:0;padding:60px 18px 18px;background:linear-gradient(transparent,rgba(0,0,0,.88))}
+.card h3{font-size:22px;letter-spacing:-.01em}
+.card .st{color:#d8d6d0;font-size:14px}
+.card .ct{color:var(--mute);font-size:12px;letter-spacing:.14em;text-transform:uppercase;margin-top:4px}
+.card .go{position:absolute;top:14px;right:14px;background:rgba(0,0,0,.6);backdrop-filter:blur(6px);border-radius:999px;padding:6px 12px;font-size:11px;letter-spacing:.12em;text-transform:uppercase;opacity:0;transition:.25s}
+.card:hover .go{opacity:1}
+@media (hover:none){.card .go{opacity:1}}
+form{display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:760px}
+label{display:grid;gap:6px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute)}
+.full{grid-column:1/-1}
+input,select,textarea{font:inherit;font-size:16px;color:var(--txt);background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:13px 14px;text-transform:none;letter-spacing:0;width:100%}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--acc)}
+textarea{min-height:120px;resize:vertical}
+.fb{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.note{font-size:13px;color:var(--mute)}
+.draft-tag{position:fixed;right:14px;bottom:14px;z-index:50;padding:8px 14px;background:rgba(12,12,14,.9);border:1px solid var(--acc);color:var(--acc);font-size:10px;letter-spacing:.25em;text-transform:uppercase;border-radius:999px}
+footer{padding:36px 0;border-top:1px solid var(--line);color:var(--mute);font-size:13px}
+@media (max-width:760px){.about{grid-template-columns:1fr;gap:30px}form{grid-template-columns:1fr}nav ul{display:none}.hero{padding:70px 0 50px}}
+</style>
+</head>
+<body>
+
+<nav><div class="wrap">
+  <a class="logo" href="#inicio" id="brand"></a>
+  <ul><li><a href="#booker">Booker</a></li><li><a href="#roster">Roster</a></li><li><a href="#propuesta">Propuesta</a></li></ul>
+</div></nav>
+
+<header class="hero" id="inicio"><div class="wrap">
+  <div class="eyebrow" id="eyebrow"></div>
+  <h1 id="headline"></h1>
+  <p id="tagline"></p>
+  <div class="btns"><a class="btn p" href="#roster">Ver roster</a><a class="btn" href="#propuesta">Enviar propuesta</a></div>
+</div></header>
+
+<section id="booker"><div class="wrap about">
+  <div>
+    <h2>Quién está detrás</h2>
+    <p class="lead" id="about"></p>
+    <div class="links" id="links"></div>
+  </div>
+  <div>
+    <h2>Cómo trabajamos</h2>
+    <div class="steps" id="steps"></div>
+  </div>
+</div></section>
+
+<section id="roster"><div class="wrap">
+  <h2>Roster</h2>
+  <p class="lead">Tocá un artista para ver su presskit completo.</p>
+  <div class="grid" id="grid"></div>
+</div></section>
+
+<section id="propuesta"><div class="wrap">
+  <h2>Contanos de tu evento</h2>
+  <p class="lead" id="formintro"></p>
+  <form id="f">
+    <label>Nombre del lugar o productora<input name="lugar" required></label>
+    <label>Ciudad<input name="ciudad" required></label>
+    <label>Fecha<input name="fecha" type="date"></label>
+    <label>Tipo de evento<select name="tipo"><option>Bar</option><option>Club</option><option>Fiesta privada</option><option>Festival</option><option>Corporativo</option><option>Otro</option></select></label>
+    <label>DJ de interés<select name="dj" id="djsel"><option value="">Todavía no sé / quiero recomendaciones</option></select></label>
+    <label>Presupuesto aproximado<input name="presu" placeholder="Opcional"></label>
+    <label class="full">Mensaje<textarea name="msg" placeholder="Horario, público, equipo disponible, lo que sea útil"></textarea></label>
+    <label class="full">Tu nombre y contacto<input name="contacto" required placeholder="Nombre y WhatsApp o mail"></label>
+    <div class="full fb">
+      <button class="btn p" type="submit">Enviar por WhatsApp</button>
+      <a class="btn" id="mailbtn" href="#">Enviar por mail</a>
+      <span class="note">Se abre tu WhatsApp con la propuesta ya escrita.</span>
+    </div>
+  </form>
+</div></section>
+
+<footer><div class="wrap"><span id="foot"></span></div></footer>
+
+<div class="draft-tag">Borrador · Sitio de booking</div>
+<script>
+/* ===== DATOS EDITABLES (luego salen de la planilla de Google) ===== */
+const BOOKER={
+  nombre:"Booking",
+  eyebrow:"Booking de DJs · Venues, productoras y bares",
+  titulo:"La música correcta para tu noche.",
+  tagline:"Un roster curado de DJs listos para tu bar, club o evento. Mirá sus presskits y escribinos tu propuesta.",
+  sobre:"Texto de ejemplo: acá va una presentación breve del booker, su experiencia y en qué zonas trabaja. Se completa con las respuestas de la guía.",
+  pasos:[["Consulta","Nos contás fecha, lugar y tipo de evento."],["Propuesta","Te recomendamos artistas según tu público y horario."],["Confirmación","Cerramos condiciones y fecha con el artista."],["Show","Coordinamos técnica y logística para que todo salga bien."]],
+  introForm:"Completá lo que sepas y te respondemos a la brevedad.",
+  whatsapp:"",   /* ej: 5492215551234 (con código de país, sin + ni espacios) */
+  mail:"",       /* ej: booking@ejemplo.com */
+  redes:[["Instagram","#"],["WhatsApp","#"]]
+};
+const ROSTER=[
+  {nombre:"OCON",estilo:"Techno · Trance · Dark Tech",ciudad:"Buenos Aires",foto:"assets/ocon.jpg",pos:"50% 30%",link:"https://nvlop-oficial.github.io/ocon/"},
+  {nombre:"Ignacio Zocco",estilo:"Melodic Techno · Peak Time · Indie Dance",ciudad:"La Plata",foto:"assets/ignacio.jpg",pos:"50% 35%",link:"https://ecosistemanvlop.com/epk/ignaciozocco/"},
+  {nombre:"RRUMI",estilo:"House",ciudad:"Buenos Aires",foto:"assets/rrumi.jpg",pos:"50% 30%",link:"https://gigcloser.com/rrumi"}
+];
+/* ================================================================= */
+const $=id=>document.getElementById(id);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+$('brand').innerHTML=esc(BOOKER.nombre)+'<i>.</i>';
+$('eyebrow').textContent=BOOKER.eyebrow;$('headline').textContent=BOOKER.titulo;$('tagline').textContent=BOOKER.tagline;
+$('about').textContent=BOOKER.sobre;$('formintro').textContent=BOOKER.introForm;
+$('foot').textContent='© '+new Date().getFullYear()+' '+BOOKER.nombre;
+$('steps').innerHTML=BOOKER.pasos.map((p,i)=>`<div class="step"><b>${i+1}</b><span><strong>${esc(p[0])}</strong>${esc(p[1])}</span></div>`).join('');
+$('links').innerHTML=BOOKER.redes.map(r=>`<a class="btn" href="${esc(r[1])}" target="_blank" rel="noopener">${esc(r[0])}</a>`).join('');
+$('grid').innerHTML=ROSTER.map(d=>`<a class="card" href="${esc(d.link)}" target="_blank" rel="noopener">
+ <div class="ph"><img src="${esc(d.foto)}" alt="${esc(d.nombre)}" loading="lazy" style="object-position:${esc(d.pos||'50% 50%')}"></div>
+ <span class="go">Ver presskit ↗</span>
+ <div class="info"><h3>${esc(d.nombre)}</h3><div class="st">${esc(d.estilo)}</div><div class="ct">${esc(d.ciudad)}</div></div></a>`).join('');
+$('djsel').insertAdjacentHTML('beforeend',ROSTER.map(d=>`<option>${esc(d.nombre)}</option>`).join(''));
+function texto(){
+  const v=Object.fromEntries(new FormData($('f')));
+  return `Hola${BOOKER.nombre?' '+BOOKER.nombre:''}, te escribo desde la web con una propuesta:\n\n`+
+   `• Lugar/productora: ${v.lugar}\n• Ciudad: ${v.ciudad}\n• Fecha: ${v.fecha||'a definir'}\n• Tipo de evento: ${v.tipo}\n• DJ de interés: ${v.dj||'quiero recomendaciones'}\n• Presupuesto: ${v.presu||'a conversar'}\n• Mensaje: ${v.msg||'-'}\n• Contacto: ${v.contacto}`;
+}
+$('f').addEventListener('submit',e=>{e.preventDefault();
+  window.open('https://wa.me/'+BOOKER.whatsapp+'?text='+encodeURIComponent(texto()),'_blank');});
+$('mailbtn').addEventListener('click',e=>{e.preventDefault();
+  if(!$('f').reportValidity())return;
+  location.href='mailto:'+BOOKER.mail+'?subject='+encodeURIComponent('Propuesta desde la web')+'&body='+encodeURIComponent(texto());});
+</script>
+</body>
+</html>
